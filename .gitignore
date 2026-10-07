@@ -1,0 +1,23 @@
+# Secrets and local configuration
+Scaler_SDE_Fullstack_Assignment_-_Fireflies_Clone.docx
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Persistent local data
+**/fireflies.db
+**/data/
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/venv/
+**/.venv/
+
+# Node / Next.js
+**/node_modules/
+**/.next/
+**/out/

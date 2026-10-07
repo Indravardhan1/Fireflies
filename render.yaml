@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: meeting-workspace-api
+    runtime: python
+    plan: starter
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    disk:
+      name: meeting-workspace-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DB_PATH
+        value: /var/data/fireflies.db
+      - key: CORS_ORIGINS
+        sync: false
+      - key: APP_ACCESS_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_TRANSCRIPTION_MODEL
+        value: whisper-1
